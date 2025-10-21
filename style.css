@@ -36,11 +36,19 @@ html, body {
 }
 
 .mao {
-    width: 100vw;
-    height: 100vh;
-    background: url('mao.png') no-repeat center center;
-    background-size: cover;
+    position: relative;
+    width: 100%;        /* chiếm full chiều ngang */
+    height: 100vh;      /* chiếm full chiều cao màn hình */
+    background: url('mao.png') no-repeat center top;
+    background-size: 100% 100%; /* kéo dài full width + height */
     flex-shrink: 0;
+}
+
+.mao-img {
+    height: 100vh;     /* cao bằng màn hình */
+    width: auto;       /* giữ tỉ lệ */
+    flex-shrink: 0;
+    object-fit: contain; /* không crop, giữ tỉ lệ */
 }
 
 @keyframes slideLoop {
