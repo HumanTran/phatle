@@ -10,20 +10,25 @@
     outline: none;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
+html, body {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     position: relative;
-    background: url('background.png') repeat;
-    background-size: contain;
-}
+    font-family: 'Poppins', sans-serif;
 
+    /* 🌸 NỀN CHÍNH – lặp ngang, không méo */
+    background-image: url('background.png');
+    background-repeat: repeat-x;        /* lặp theo chiều ngang */
+    background-size: auto 100%;         /* cao vừa khung, giữ tỉ lệ */
+    background-position: center bottom; /* căn giữa, dính đáy */
+    background-attachment: scroll;      
+}
 .mao-container {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200vw;
+    width: 100%;
     height: 100vh;
     z-index: 2;
     display: flex;
