@@ -1,6 +1,7 @@
 const mainImage = document.getElementById('mainImage');
 const imageContainer = document.getElementById('imageContainer');
 const letterContent = document.getElementById('letterContent');
+const bgMusic = document.getElementById('bgMusic');
 let currentState = 'biathu'; // biathu, phongthu, phatle1, phatle2
 
 mainImage.addEventListener('click', function() {
@@ -24,6 +25,9 @@ mainImage.addEventListener('click', function() {
                 letterContent.style.transition = ''; // Reset transition
                 letterContent.classList.add('show');
                 currentState = 'phatle1';
+                
+                // Phát nhạc khi phatle1 hiện ra
+                bgMusic.play().catch(e => console.log('Audio play failed:', e));
             }, 300);
         }, 700);
     }
@@ -31,6 +35,8 @@ mainImage.addEventListener('click', function() {
 
 // Click vào ảnh phatle1 để hiện phatle2
 const letterImage = letterContent.querySelector('.letter-image');
+const letterText = document.getElementById('letterText');
+
 letterImage.addEventListener('click', function(e) {
     e.stopPropagation();
     
@@ -45,6 +51,10 @@ letterImage.addEventListener('click', function(e) {
             letterContent.style.animation = 'letterAppear 0.7s cubic-bezier(0.25, 0.1, 0.25, 1)';
             currentState = 'phatle2';
         }, 300);
+    } else if (currentState === 'phatle2') {
+        // Click lần 2 để hiện nội dung thư
+        letterImage.style.display = 'none';
+        letterText.style.display = 'block';
     }
 });
 
@@ -79,5 +89,11 @@ closeBtn.addEventListener('click', function(e) {
         
         // Reset ảnh về phatle1
         letterImage.src = 'phatle1.jpg';
+        letterImage.style.display = 'block';
+        letterText.style.display = 'none';
+        
+        // Pause nhạc khi close
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
     }, 300);
 });
