@@ -15,8 +15,8 @@ body {
     height: 100vh;
     overflow: hidden;
     position: relative;
-    background: url('background.png') repeat center center;
-    background-size: auto 100%;
+    background: url('background.png') repeat;
+    background-size: contain;
 }
 
 .mao-container {
