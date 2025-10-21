@@ -91,9 +91,5 @@ closeBtn.addEventListener('click', function(e) {
         letterImage.src = 'phatle1.jpg';
         letterImage.style.display = 'block';
         letterText.style.display = 'none';
-        
-        // Pause nhạc khi close
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
     }, 300);
 });
