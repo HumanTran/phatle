@@ -99,7 +99,7 @@ html, body {
 }
 
 .letter-content {
-    background: #ffffff;
+    background: #fef9e7;
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -149,6 +149,49 @@ html, body {
     display: block;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.letter-text {
+    display: none;
+    margin-top: 20px;
+    color: #333;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.8;
+    animation: fadeInText 0.8s ease;
+}
+
+.letter-text h2 {
+    color: #d4526e;
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Dancing Script', cursive;
+}
+
+.letter-text p {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.letter-text .signature {
+    text-align: right;
+    font-style: italic;
+    margin-top: 20px;
+    color: #d4526e;
+    font-family: 'Dancing Script', cursive;
+    font-size: 18px;
+}
+
+@keyframes fadeInText {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes letterAppear {
