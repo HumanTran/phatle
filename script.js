@@ -42,21 +42,42 @@ letterImage.addEventListener('click', function(e) {
     
     if (currentState === 'phatle1') {
         // Fade out
-        letterContent.style.opacity = '0';
-        
+        letterImage.classList.add('fade-out');
+
         setTimeout(() => {
             // Đổi sang phatle2
             letterImage.src = 'phatle2.jpg';
-            letterContent.style.opacity = '1';
+            letterImage.classList.remove('fade-out');
+            letterImage.classList.add('fade-in');
             letterContent.style.animation = 'letterAppear 0.7s cubic-bezier(0.25, 0.1, 0.25, 1)';
             currentState = 'phatle2';
+
+            // Sau khi hiệu ứng fade-in xong thì bỏ class để tái sử dụng
+            setTimeout(() => {
+                letterImage.classList.remove('fade-in');
+            }, 400);
         }, 300);
     } else if (currentState === 'phatle2') {
         // Click lần 2 để hiện nội dung thư
-        letterImage.style.display = 'none';
-        letterText.style.display = 'block';
-    }
+        letterImage.classList.add('fade-out');
+
+        const onFadeOutEnd = () => {
+            // Gỡ event listener để tránh lặp lại
+            letterImage.removeEventListener('transitionend', onFadeOutEnd);
+
+            // Ẩn ảnh và hiện thư
+            letterImage.style.display = 'none';
+            letterImage.classList.remove('fade-out');
+            letterText.style.display = 'block';
+            letterText.style.animation = 'fadeInText 0.8s ease';
+            currentState = 'phatle3';
+        };
+
+        // Lắng nghe khi hiệu ứng kết thúc
+        letterImage.addEventListener('transitionend', onFadeOutEnd);
+}
 });
+
 
 // Nút close
 const closeBtn = document.getElementById('closeBtn');
