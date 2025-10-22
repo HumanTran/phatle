@@ -149,6 +149,14 @@ html, body {
     display: block;
     border-radius: 10px;
     cursor: pointer;
+    transition: opacity 0.4s ease;
+}
+
+.letter-image.fade-out {
+    opacity: 0;
+}
+.letter-image.fade-in {
+    opacity: 1;
 }
 
 .letter-text {
